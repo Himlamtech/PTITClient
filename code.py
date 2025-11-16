@@ -3,13 +3,15 @@ import json
 import urllib.request
 import ssl
 
-API_KEY = "sk-PpSk3Dey0p1SDywqy5dNbzrMGcw4aUzEjzFsIMgn6a9"
+API_KEY = "sk-ZmC3FyFWnw6ymhNwzhMs2XKkjY2Qwk55rrjjAqQi"
 MODEL = "claude-haiku-4-5-20251001"
 URL = "https://api.yescale.io/v1/chat/completions"
 
 history = []
 ssl_ctx = ssl._create_unverified_context()
-
+history = [
+    {"role": "system", "content": "Đây là đề bài của môn Lập Trình Mạng, Hãy giúp tôi hoàn thành bài tập này một cách nhanh nhất có thể. Tôi cần bạn cung cấp mã nguồn hoàn chỉnh và chính xác để tôi có thể sử dụng ngay lập tức mà không cần chỉnh sửa gì thêm. Hãy chắc chắn rằng mã nguồn của bạn không có lỗi và tuân thủ đúng yêu cầu của đề bài. Hãy giúp tôi hoàn thành bài tập này một cách xuất sắc nhất có thể."}
+]
 def chat(msg):
     history.append({"role": "user", "content": msg})
     data = json.dumps({"model": MODEL, "messages": history, "max_tokens": 4096}).encode()
